@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import Image from 'next/image';
-import { Gift, Library, LoaderCircle, PartyPopper, Sparkles, Upload, FileJson, TreePine } from 'lucide-react';
+import { Gift, Library, LoaderCircle, PartyPopper, Sparkles, Upload, FileJson, TreePine, ChevronDown } from 'lucide-react';
 import { useToast } from "@/hooks/use-toast";
 import { getAiSuggestions } from '@/lib/actions';
 import type { Occasion } from '@/app/page';
@@ -11,7 +11,6 @@ import { cn } from '@/lib/utils';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -44,6 +43,13 @@ const fontOptions = [
     { value: 'font-dancing-script', label: 'Dancing Script' },
     { value: 'font-lobster', label: 'Lobster' },
     { value: 'font-pacifico', label: 'Pacifico' },
+];
+
+const occasionOptions: { value: Occasion; label: string; icon: React.ReactNode }[] = [
+    { value: 'Birthday', label: 'Birthday', icon: <PartyPopper className="text-pink-500" /> },
+    { value: 'Holidays', label: 'Holidays', icon: <Gift className="text-red-500" /> },
+    { value: 'Christmas', label: 'Christmas', icon: <TreePine className="text-green-600" /> },
+    { value: 'Diwali', label: 'Diwali', icon: <FileJson className="text-yellow-500" /> },
 ];
 
 export default function EditorPanel({
@@ -123,32 +129,21 @@ export default function EditorPanel({
           <CardDescription>Select the event for your card.</CardDescription>
         </CardHeader>
         <CardContent>
-          <RadioGroup value={occasion} onValueChange={(value) => onOccasionChange(value as Occasion)} className="flex flex-wrap gap-4">
-            <div className="flex items-center space-x-2">
-              <RadioGroupItem value="Birthday" id="birthday" />
-              <Label htmlFor="birthday" className="flex items-center gap-2 text-base cursor-pointer">
-                <PartyPopper className="text-pink-500" /> Birthday
-              </Label>
-            </div>
-            <div className="flex items-center space-x-2">
-              <RadioGroupItem value="Holidays" id="holidays" />
-              <Label htmlFor="holidays" className="flex items-center gap-2 text-base cursor-pointer">
-                <Gift className="text-red-500" /> Holidays
-              </Label>
-            </div>
-            <div className="flex items-center space-x-2">
-              <RadioGroupItem value="Christmas" id="christmas" />
-              <Label htmlFor="christmas" className="flex items-center gap-2 text-base cursor-pointer">
-                <TreePine className="text-green-600" /> Christmas
-              </Label>
-            </div>
-            <div className="flex items-center space-x-2">
-              <RadioGroupItem value="Diwali" id="diwali" />
-              <Label htmlFor="diwali" className="flex items-center gap-2 text-base cursor-pointer">
-                <FileJson className="text-yellow-500" /> Diwali
-              </Label>
-            </div>
-          </RadioGroup>
+          <Select value={occasion} onValueChange={(value) => onOccasionChange(value as Occasion)}>
+            <SelectTrigger>
+              <SelectValue placeholder="Select an occasion" />
+            </SelectTrigger>
+            <SelectContent>
+              {occasionOptions.map((opt) => (
+                <SelectItem key={opt.value} value={opt.value}>
+                  <div className="flex items-center gap-2">
+                    {opt.icon}
+                    <span>{opt.label}</span>
+                  </div>
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
         </CardContent>
       </Card>
 
