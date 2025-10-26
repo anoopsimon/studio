@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import Image from 'next/image';
-import { Gift, Library, LoaderCircle, PartyPopper, Sparkles, Upload, FileJson, TreePine, ChevronDown } from 'lucide-react';
+import { Gift, Library, LoaderCircle, PartyPopper, Sparkles, Upload, FileJson, TreePine } from 'lucide-react';
 import { useToast } from "@/hooks/use-toast";
 import { getAiSuggestions } from '@/lib/actions';
 import type { Occasion } from '@/app/page';
@@ -38,8 +38,8 @@ interface EditorPanelProps {
 }
 
 const fontOptions = [
-    { value: 'font-body', label: 'Alegreya' },
-    { value: 'font-headline', label: 'Belleza' },
+    { value: 'font-body', label: 'Merriweather' },
+    { value: 'font-headline', label: 'Playfair Display' },
     { value: 'font-dancing-script', label: 'Dancing Script' },
     { value: 'font-lobster', label: 'Lobster' },
     { value: 'font-pacifico', label: 'Pacifico' },
@@ -49,7 +49,7 @@ const occasionOptions: { value: Occasion; label: string; icon: React.ReactNode }
     { value: 'Birthday', label: 'Birthday', icon: <PartyPopper className="text-pink-500" /> },
     { value: 'Holidays', label: 'Holidays', icon: <Gift className="text-red-500" /> },
     { value: 'Christmas', label: 'Christmas', icon: <TreePine className="text-green-600" /> },
-    { value: 'Diwali', label: 'Diwali', icon: <FileJson className="text-yellow-500" /> },
+    { value: 'Diwali', label: 'Diwali', icon: <Sparkles className="text-yellow-500" /> },
 ];
 
 export default function EditorPanel({
