@@ -1,5 +1,3 @@
-'use server';
-
 export async function getAiSuggestions(occasion: string): Promise<{ suggestions?: string[]; error?: string }> {
   // This is a mock implementation as per project guidelines.
   // In a real application, this would call a Genkit flow from '@ai/flows'.
