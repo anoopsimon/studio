@@ -26,5 +26,23 @@ export async function getAiSuggestions(occasion: string): Promise<{ suggestions?
       ]
     };
   }
+  if (occasion === 'Christmas') {
+    return {
+      suggestions: [
+        "Merry Christmas! Wishing you all the happiness your holiday can hold.",
+        "May your Christmas sparkle with moments of love, laughter, and goodwill.",
+        "Wishing you a very Merry Christmas and a wonderful New Year."
+      ]
+    };
+  }
+  if (occasion === 'Diwali') {
+    return {
+      suggestions: [
+        "May the divine light of Diwali spread into your life peace, prosperity, happiness, and good health.",
+        "Wishing you a sparkling festival of lights! Happy Diwali!",
+        "May the beauty of Diwali fill your home with happiness, and may the coming year provide you with all that brings you joy."
+      ]
+    };
+  }
   return { error: "Could not generate suggestions for this occasion." };
 }

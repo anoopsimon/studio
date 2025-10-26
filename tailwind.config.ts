@@ -19,6 +19,9 @@ export default {
       fontFamily: {
         body: ['Alegreya', 'serif'],
         headline: ['Belleza', 'sans-serif'],
+        'dancing-script': ['"Dancing Script"', 'cursive'],
+        lobster: ['Lobster', 'cursive'],
+        pacifico: ['Pacifico', 'cursive'],
       },
       colors: {
         background: 'hsl(var(--background))',

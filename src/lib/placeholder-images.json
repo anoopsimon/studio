@@ -35,6 +35,30 @@
       "description": "Cozy fireplace with stockings",
       "imageUrl": "https://images.unsplash.com/photo-1603039531759-1a1bbe4f9f94?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxjb3p5JTIwZmlyZXBsYWNlfGVufDB8fHx8MTc2MTQyMDY2N3ww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "cozy fireplace"
+    },
+    {
+      "id": "christmas-1",
+      "description": "Christmas tree with lights",
+      "imageUrl": "https://images.unsplash.com/photo-1558018754-1f1b019ece9d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxjaHJpc3RtYXMlMjB0cmVlfGVufDB8fHx8MTc2MTQ2ODI5N3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "christmas tree"
+    },
+    {
+      "id": "christmas-2",
+      "description": "Santa Claus figurine",
+      "imageUrl": "https://images.unsplash.com/photo-1580989188745-6a6bd5b06722?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxzYW50YSUyMGNsYXVzfGVufDB8fHx8MTc2MTQ2ODI5N3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "santa claus"
+    },
+    {
+      "id": "diwali-1",
+      "description": "Diwali lamps (diyas)",
+      "imageUrl": "https://images.unsplash.com/photo-1666638787408-d3b359b3c982?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxkaXdhbGklMjBsYW1wc3xlbnwwfHx8fDE3NjE0NjgyOTd8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "diwali lamps"
+    },
+    {
+      "id": "diwali-2",
+      "description": "Colorful rangoli pattern",
+      "imageUrl": "https://images.unsplash.com/photo-1636080810842-2dc5cdfd9483?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxkaXdhbGklMjByYW5nb2xpfGVufDB8fHx8MTc2MTQ2ODI5N3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "diwali rangoli"
     }
   ]
 }

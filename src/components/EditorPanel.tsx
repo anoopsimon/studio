@@ -2,13 +2,13 @@
 
 import * as React from 'react';
 import Image from 'next/image';
-import { Gift, Library, LoaderCircle, PartyPopper, Sparkles, Upload } from 'lucide-react';
+import { Gift, Library, LoaderCircle, PartyPopper, Sparkles, Upload, FileJson, TreePine } from 'lucide-react';
 import { useToast } from "@/hooks/use-toast";
 import { getAiSuggestions } from '@/lib/actions';
 import type { Occasion } from '@/app/page';
 import type { CardTemplate } from '@/lib/templates';
 import { cn } from '@/lib/utils';
-import { PlaceHolderImages, type ImagePlaceholder } from '@/lib/placeholder-images';
+import { PlaceHolderImages } from '@/lib/placeholder-images';
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
@@ -19,6 +19,7 @@ import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Popover, PopoverContent, PopoverTrigger } from './ui/popover';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './ui/select';
 
 interface EditorPanelProps {
   occasion: Occasion;
@@ -31,7 +32,19 @@ interface EditorPanelProps {
   message: string;
   onMessageChange: (message: string) => void;
   onImageChange: (imageUrl: string) => void;
+  headlineFont: string;
+  onHeadlineFontChange: (font: string) => void;
+  bodyFont: string;
+  onBodyFontChange: (font: string) => void;
 }
+
+const fontOptions = [
+    { value: 'font-body', label: 'Alegreya' },
+    { value: 'font-headline', label: 'Belleza' },
+    { value: 'font-dancing-script', label: 'Dancing Script' },
+    { value: 'font-lobster', label: 'Lobster' },
+    { value: 'font-pacifico', label: 'Pacifico' },
+];
 
 export default function EditorPanel({
   occasion,
@@ -44,6 +57,10 @@ export default function EditorPanel({
   message,
   onMessageChange,
   onImageChange,
+  headlineFont,
+  onHeadlineFontChange,
+  bodyFont,
+  onBodyFontChange,
 }: EditorPanelProps) {
   const { toast } = useToast();
   const [isAiLoading, setIsAiLoading] = React.useState(false);
@@ -90,9 +107,11 @@ export default function EditorPanel({
   }
 
   const imageLibrary = React.useMemo(() => {
-    return occasion === 'Birthday' 
-      ? PlaceHolderImages.filter(img => img.id.startsWith('birthday')) 
-      : PlaceHolderImages.filter(img => img.id.startsWith('holiday'));
+    let filterKey = 'birthday';
+    if (occasion === 'Holidays') filterKey = 'holiday';
+    if (occasion === 'Christmas') filterKey = 'christmas';
+    if (occasion === 'Diwali') filterKey = 'diwali';
+    return PlaceHolderImages.filter(img => img.id.startsWith(filterKey));
   }, [occasion]);
 
 
@@ -104,7 +123,7 @@ export default function EditorPanel({
           <CardDescription>Select the event for your card.</CardDescription>
         </CardHeader>
         <CardContent>
-          <RadioGroup value={occasion} onValueChange={(value) => onOccasionChange(value as Occasion)} className="flex gap-4">
+          <RadioGroup value={occasion} onValueChange={(value) => onOccasionChange(value as Occasion)} className="flex flex-wrap gap-4">
             <div className="flex items-center space-x-2">
               <RadioGroupItem value="Birthday" id="birthday" />
               <Label htmlFor="birthday" className="flex items-center gap-2 text-base cursor-pointer">
@@ -115,6 +134,18 @@ export default function EditorPanel({
               <RadioGroupItem value="Holidays" id="holidays" />
               <Label htmlFor="holidays" className="flex items-center gap-2 text-base cursor-pointer">
                 <Gift className="text-red-500" /> Holidays
+              </Label>
+            </div>
+            <div className="flex items-center space-x-2">
+              <RadioGroupItem value="Christmas" id="christmas" />
+              <Label htmlFor="christmas" className="flex items-center gap-2 text-base cursor-pointer">
+                <TreePine className="text-green-600" /> Christmas
+              </Label>
+            </div>
+            <div className="flex items-center space-x-2">
+              <RadioGroupItem value="Diwali" id="diwali" />
+              <Label htmlFor="diwali" className="flex items-center gap-2 text-base cursor-pointer">
+                <FileJson className="text-yellow-500" /> Diwali
               </Label>
             </div>
           </RadioGroup>
@@ -192,6 +223,38 @@ export default function EditorPanel({
                   )}
                 </PopoverContent>
               </Popover>
+            </div>
+          </div>
+          <div className="grid grid-cols-2 gap-4">
+            <div className="space-y-2">
+              <Label htmlFor="headline-font">Headline Font</Label>
+              <Select value={headlineFont} onValueChange={onHeadlineFontChange}>
+                <SelectTrigger id="headline-font">
+                  <SelectValue placeholder="Select font" />
+                </SelectTrigger>
+                <SelectContent>
+                  {fontOptions.map((font) => (
+                    <SelectItem key={font.value} value={font.value}>
+                      <span className={font.value}>{font.label}</span>
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="body-font">Body Font</Label>
+              <Select value={bodyFont} onValueChange={onBodyFontChange}>
+                <SelectTrigger id="body-font">
+                  <SelectValue placeholder="Select font" />
+                </SelectTrigger>
+                <SelectContent>
+                  {fontOptions.map((font) => (
+                    <SelectItem key={font.value} value={font.value}>
+                      <span className={font.value}>{font.label}</span>
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
             </div>
           </div>
         </CardContent>

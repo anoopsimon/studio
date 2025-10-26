@@ -11,7 +11,7 @@ import EditorPanel from "@/components/EditorPanel";
 import CardPreview from "@/components/CardPreview";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 
-export type Occasion = "Birthday" | "Holidays";
+export type Occasion = "Birthday" | "Holidays" | "Christmas" | "Diwali";
 
 export default function Home() {
   const [occasion, setOccasion] = React.useState<Occasion>("Birthday");
@@ -24,6 +24,8 @@ export default function Home() {
   );
   const [image, setImage] = React.useState<string>(PlaceHolderImages[0].imageUrl);
   const [isDownloading, setIsDownloading] = React.useState(false);
+  const [headlineFont, setHeadlineFont] = React.useState('font-headline');
+  const [bodyFont, setBodyFont] = React.useState('font-body');
 
   const cardRef = React.useRef<HTMLDivElement>(null);
 
@@ -31,13 +33,39 @@ export default function Home() {
     setOccasion(newOccasion);
     const newTemplate = templates.find((t) => t.occasion === newOccasion)!;
     setTemplate(newTemplate);
-    setHeadline(newOccasion === "Birthday" ? "Happy Birthday!" : "Happy Holidays!");
-    setMessage(newOccasion === "Birthday" ? "Wishing you a wonderful day!" : "May your days be merry and bright.");
-    setImage(newOccasion === "Birthday" ? PlaceHolderImages[0].imageUrl : PlaceHolderImages[2].imageUrl);
+    let defaultHeadline = "Happy Birthday!";
+    let defaultMessage = "Wishing you a wonderful day!";
+    let defaultImage = PlaceHolderImages[0].imageUrl;
+
+    switch (newOccasion) {
+      case "Holidays":
+        defaultHeadline = "Happy Holidays!";
+        defaultMessage = "May your days be merry and bright.";
+        defaultImage = PlaceHolderImages[3].imageUrl;
+        break;
+      case "Christmas":
+        defaultHeadline = "Merry Christmas!";
+        defaultMessage = "Wishing you a festive and joyful holiday season.";
+        defaultImage = PlaceHolderImages[6].imageUrl;
+        break;
+      case "Diwali":
+        defaultHeadline = "Happy Diwali!";
+        defaultMessage = "May the festival of lights fill your home with joy.";
+        defaultImage = PlaceHolderImages[8].imageUrl;
+        break;
+    }
+    
+    setHeadline(defaultHeadline);
+    setMessage(defaultMessage);
+    setImage(defaultImage);
+    setHeadlineFont(newTemplate.layout.headlineFont);
+    setBodyFont(newTemplate.layout.bodyFont);
   };
   
   const handleTemplateChange = (newTemplate: CardTemplate) => {
     setTemplate(newTemplate);
+    setHeadlineFont(newTemplate.layout.headlineFont);
+    setBodyFont(newTemplate.layout.bodyFont);
   }
 
   const handleDownload = React.useCallback(() => {
@@ -81,6 +109,10 @@ export default function Home() {
             message={message}
             onMessageChange={setMessage}
             onImageChange={setImage}
+            headlineFont={headlineFont}
+            onHeadlineFontChange={setHeadlineFont}
+            bodyFont={bodyFont}
+            onBodyFontChange={setBodyFont}
           />
           <div className="flex flex-col gap-6">
             <CardPreview
@@ -89,6 +121,8 @@ export default function Home() {
               headline={headline}
               message={message}
               image={image}
+              headlineFont={headlineFont}
+              bodyFont={bodyFont}
             />
             <Button onClick={handleDownload} disabled={isDownloading} size="lg">
               {isDownloading ? (

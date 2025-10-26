@@ -10,10 +10,12 @@ interface CardPreviewProps {
   headline: string;
   message: string;
   image: string | null;
+  headlineFont: string;
+  bodyFont: string;
 }
 
 const CardPreview = React.forwardRef<HTMLDivElement, CardPreviewProps>(
-  ({ template, headline, message, image }, ref) => {
+  ({ template, headline, message, image, headlineFont, bodyFont }, ref) => {
     return (
       <div className="flex flex-col items-center gap-4">
         <h2 className="font-headline text-2xl text-foreground">Live Preview</h2>
@@ -35,8 +37,8 @@ const CardPreview = React.forwardRef<HTMLDivElement, CardPreviewProps>(
               )}
             </div>
             <div className={cn("flex h-2/5 flex-col justify-center", template.layout.textContainerClass)} style={{ color: template.layout.textColor }}>
-              <h3 className={cn("text-4xl", template.layout.headlineFont)}>{headline}</h3>
-              <p className={cn("mt-2 text-lg", template.layout.bodyFont)}>{message}</p>
+              <h3 className={cn("text-4xl", headlineFont)}>{headline}</h3>
+              <p className={cn("mt-2 text-lg", bodyFont)}>{message}</p>
             </div>
           </div>
         </div>
