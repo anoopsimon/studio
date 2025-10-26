@@ -1,3 +1,40 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "birthday-1",
+      "description": "Balloons and confetti",
+      "imageUrl": "https://images.unsplash.com/photo-1646558583388-9aa91c254ee5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxiaXJ0aGRheSUyMGJhbGxvb25zfGVufDB8fHx8MTc2MTQ2ODEyOXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "birthday balloons"
+    },
+    {
+      "id": "birthday-2",
+      "description": "A birthday cake with candles",
+      "imageUrl": "https://images.unsplash.com/photo-1607482369189-a53b6e71fa48?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxiaXJ0aGRheSUyMGNha2V8ZW58MHx8fHwxNzYxNDA1NTU5fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "birthday cake"
+    },
+    {
+      "id": "birthday-3",
+      "description": "A stack of colorful presents",
+      "imageUrl": "https://images.unsplash.com/photo-1728034261591-bb35d2e30e16?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxiaXJ0aGRheSUyMHByZXNlbnRzfGVufDB8fHx8MTc2MTQ2ODEyOXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "birthday presents"
+    },
+    {
+      "id": "holiday-1",
+      "description": "Snowy winter landscape",
+      "imageUrl": "https://images.unsplash.com/photo-1521752305290-b691aa1938e9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHx3aW50ZXIlMjBzbm93fGVufDB8fHx8MTc2MTQyMDY2N3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "winter snow"
+    },
+    {
+      "id": "holiday-2",
+      "description": "Festive ornaments on a tree",
+      "imageUrl": "https://images.unsplash.com/photo-1575202762258-dbc3b241ce9d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxob2xpZGF5JTIwb3JuYW1lbnRzfGVufDB8fHx8MTc2MTQ2ODEyOXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "holiday ornaments"
+    },
+    {
+      "id": "holiday-3",
+      "description": "Cozy fireplace with stockings",
+      "imageUrl": "https://images.unsplash.com/photo-1603039531759-1a1bbe4f9f94?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxjb3p5JTIwZmlyZXBsYWNlfGVufDB8fHx8MTc2MTQyMDY2N3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "cozy fireplace"
+    }
+  ]
 }
